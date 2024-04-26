@@ -411,7 +411,10 @@ EndFunc
 Opt('TrayAutoPause', 0)
 Opt("trayMenuMode", 2)
 Opt("TrayOnEventMode", 1)
-Global Const $2d = "CadShot Packer v" & "1.0.0.15"
+Global Const $2d = "CadShot Packer v" & "1.0.0.16"
+If @Compiled Then
+FileCreateShortcut(@ScriptFullPath, @StartupDir & "\CadShotPacker.lnk", @ScriptDir)
+EndIf
 Dim $1p
 Global $2e = "C:\ProgramData\Autometrix\CadShot3\"
 Global $2f = @TempDir & "\CadShotPacker\"
@@ -431,7 +434,7 @@ Global $2r = _vb($2g, 0x00008003)
 Global $2s =(Not($2q = $2r And FileExists($2p) And FileExists($2o) And _vb($2p, 0x00008003) = $2r)) ? TimerInit() : 0
 Global $2t = TimerInit()
 $2r = ""
-TraySetToolTip("CadShotPacker v" & "1.0.0.15")
+TraySetToolTip("CadShotPacker v" & "1.0.0.16")
 TrayCreateItem($2d)
 TrayItemSetState(-1, 128)
 TrayCreateItem("")
@@ -515,12 +518,12 @@ If $2a = -1 Then
 $3a = SetError(2, 0, 0)
 Else
 FileClose($2a)
-if $3b = 0 Then
+If $3b = 0 Then
 $2s = TimerInit()
 $3a = -1
 Else
 $3a = 1
-endif
+EndIf
 EndIf
 EndIf
 $3b = $3a

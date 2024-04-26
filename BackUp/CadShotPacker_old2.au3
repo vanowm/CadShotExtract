@@ -3,7 +3,7 @@
 #AutoIt3Wrapper_Compression=4
 #AutoIt3Wrapper_UseUpx=y
 #AutoIt3Wrapper_Res_Description=CadShot Packer
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.17
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.16
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=y
 #AutoIt3Wrapper_Res_ProductVersion=1.0.0
 #AutoIt3Wrapper_Res_LegalCopyright=©V@no 2023
@@ -26,12 +26,12 @@ Opt('TrayAutoPause', 0)
 Opt("trayMenuMode", 2) ; no aotomatic check
 Opt("TrayOnEventMode", 1) ; Enable TrayOnEventMode.
 
-Global Const $VERSION = "1.0.0.17"
+Global Const $VERSION = "1.0.0.16"
 Global Const $TITLE = "CadShot Packer v" & $VERSION
 
 If @Compiled Then
-	FileCreateShortcut(@ScriptFullPath, @StartupDir & "\CadShotPacker.lnk", @ScriptDir)
-EndIf
+		FileCreateShortcut(@ScriptFullPath, @StartupDir & "\CadShotPacker.lnk", @ScriptDir)
+Endif
 
 Dim $msg
 Global $cadShotDir = "C:\ProgramData\Autometrix\CadShot3\"
@@ -156,12 +156,12 @@ Func _FileTestOpen($FileIn)
 			$return = SetError(2, 0, 0)
 		Else
 			FileClose($hFile)
-			If $lastReturn = 0 Then
+			if $lastReturn = 0 Then 
 				$modified = TimerInit()
 				$return = -1
 			Else
 				$return = 1
-			EndIf
+			endif
 		EndIf
 	EndIf
 	$lastReturn = $return
